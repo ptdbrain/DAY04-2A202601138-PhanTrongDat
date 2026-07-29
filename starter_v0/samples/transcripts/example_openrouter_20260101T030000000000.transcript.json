@@ -1,0 +1,206 @@
+{
+  "transcript_id": "example_openrouter_20260101T030000000000",
+  "version": "v3",
+  "artifact_version": "v3+pa1b2c3d4e5f6+t1a2b3c4d5e6f",
+  "prompt_hash": "a1b2c3d4e5f6",
+  "tools_hash": "1a2b3c4d5e6f",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "artifacts/system_prompt.md",
+  "tools": "artifacts/tools.yaml",
+  "history_window": 5,
+  "max_tool_rounds": 4,
+  "created_at": "2026-01-01T03:00:00",
+  "updated_at": "2026-01-01T03:02:00",
+  "turns": [
+    {
+      "turn_index": 1,
+      "started_at": "2026-01-01T03:00:00",
+      "user": "Tin AI hôm nay có gì nổi bật?",
+      "status": "answered",
+      "assistant_text": "Một vài tin AI nổi bật hôm nay: [nguồn 1], [nguồn 2].",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "AI",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 3
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "AI",
+                "topic": "news",
+                "timeframe": "day",
+                "max_results": 3
+              },
+              "result": {
+                "items": [
+                  {
+                    "title": "[MOCK] AI headline 1",
+                    "url": "https://example.com/a",
+                    "source": "example.com",
+                    "summary": "Mock summary 1."
+                  },
+                  {
+                    "title": "[MOCK] AI headline 2",
+                    "url": "https://example.com/b",
+                    "source": "example.com",
+                    "summary": "Mock summary 2."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "AI",
+            "topic": "news",
+            "timeframe": "day",
+            "max_results": 3
+          },
+          "result": {
+            "items": [
+              {
+                "title": "[MOCK] AI headline 1",
+                "url": "https://example.com/a",
+                "source": "example.com",
+                "summary": "Mock summary 1."
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-01-01T03:00:30"
+    },
+    {
+      "turn_index": 2,
+      "started_at": "2026-01-01T03:01:00",
+      "user": "Tóm tắt vài tweet mới nhất giúp mình",
+      "status": "waiting_for_user",
+      "assistant_text": "Bạn muốn lấy bài đăng từ tài khoản nào?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "question": "Bạn muốn lấy bài đăng từ tài khoản nào?",
+                "response_type": "text"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "clarify",
+              "args": {
+                "question": "Bạn muốn lấy bài đăng từ tài khoản nào?",
+                "response_type": "text"
+              },
+              "result": {
+                "tool": "clarify",
+                "question": "Bạn muốn lấy bài đăng từ tài khoản nào?",
+                "response_type": "text",
+                "options": [],
+                "awaiting_user": true
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn muốn lấy bài đăng từ tài khoản nào?",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "clarify",
+            "question": "Bạn muốn lấy bài đăng từ tài khoản nào?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ],
+      "ended_at": "2026-01-01T03:01:10"
+    },
+    {
+      "turn_index": 3,
+      "started_at": "2026-01-01T03:01:40",
+      "user": "Của Andrej Karpathy nhé, lấy 5 bài",
+      "status": "answered",
+      "assistant_text": "5 bài đăng gần đây của tài khoản đã chọn: [tóm tắt].",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "timeline",
+              "args": {
+                "screenname": "karpathy",
+                "limit": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "timeline",
+              "args": {
+                "screenname": "karpathy",
+                "limit": 5
+              },
+              "result": {
+                "items": [
+                  {
+                    "title": "[MOCK] post 1",
+                    "url": "https://example.com/p1",
+                    "source": "x.com",
+                    "summary": "Mock post."
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "karpathy",
+            "limit": 5
+          },
+          "result": {
+            "items": [
+              {
+                "title": "[MOCK] post 1",
+                "url": "https://example.com/p1",
+                "source": "x.com",
+                "summary": "Mock post."
+              }
+            ]
+          }
+        }
+      ],
+      "ended_at": "2026-01-01T03:02:00"
+    }
+  ]
+}

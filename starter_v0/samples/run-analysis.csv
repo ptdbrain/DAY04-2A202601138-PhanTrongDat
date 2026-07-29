@@ -1,0 +1,4 @@
+run_id,version,artifact_version,suite,case_id,is_multiturn,case_failure_type,observed_mismatch,expected_tool,actual_tool,passed,routing_correct,args_correct,failures
+v0_B_base_openrouter_20260101T000000000000,v0,v0+pa1b2c3d4e5f6+t1a2b3c4d5e6f,base,EXAMPLE_pass_case,False,wrong_tool,,lookup,lookup,True,True,True,
+v0_B_base_openrouter_20260101T000000000000,v0,v0+pa1b2c3d4e5f6+t1a2b3c4d5e6f,base,EXAMPLE_fail_routing,False,missing_info,missing_tool_call,clarify,timeline,False,False,False,missing tool call clarify; extra tool call timeline
+v0_B_base_openrouter_20260101T000000000000,v0,v0+pa1b2c3d4e5f6+t1a2b3c4d5e6f,base,EXAMPLE_fail_arg,False,wrong_arg_value,wrong_arg_value,lookup,lookup,False,True,False,<chi tiết lỗi args ví dụ>

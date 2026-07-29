@@ -1,0 +1,1 @@
+# extract_atomic_claims\n\nTách một bài viết dài thành các mệnh đề nhỏ có thể kiểm chứng riêng biệt.

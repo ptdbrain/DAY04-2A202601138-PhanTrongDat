@@ -1,0 +1,307 @@
+{
+  "dataset_id": "day04_v2_group_eval",
+  "dataset_role": "eval",
+  "description": "10 cases for group G16",
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "T01_youtube_summarizer_single",
+      "phase": "B",
+      "query": "Tóm tắt video youtube này giúp mình nhé: https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "youtube_summarizer",
+            "args": {
+              "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Gọi tool youtube_summarizer khi có URL hợp lệ."
+      }
+    },
+    {
+      "id": "T02_weather_forecast_single",
+      "phase": "B",
+      "query": "Thời tiết ở Tokyo hôm nay thế nào?",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_forecast",
+            "args": {
+              "location": "Tokyo"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Gọi tool thời tiết với tham số thành phố đúng."
+      }
+    },
+    {
+      "id": "T03_crypto_tracker_single",
+      "phase": "B",
+      "query": "Tra cứu giá đồng Ethereum (ETH) hiện tại.",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "crypto_tracker",
+            "args": {
+              "symbol": "ETH"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Gọi tool crypto với mã giao dịch chính xác."
+      }
+    },
+    {
+      "id": "T04_github_explorer_single",
+      "phase": "B",
+      "query": "Tìm kiếm các project AI bằng Python đang hot trên Github.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_explorer",
+            "args": {
+              "query": "AI",
+              "language": "Python"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Tìm kiếm Github với đúng query và language."
+      }
+    },
+    {
+      "id": "T05_image_generator_single",
+      "phase": "B",
+      "query": "Tạo cho mình một bức tranh về con mèo không gian.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "image_generator",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Gọi công cụ sinh ảnh khi có yêu cầu vẽ tranh."
+      }
+    },
+    {
+      "id": "M07_youtube_missing_url",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Bạn có thể tóm tắt video Youtube này không?"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Yêu cầu tóm tắt nhưng thiếu URL thì phải hỏi lại."
+      }
+    },
+    {
+      "id": "M08_youtube_provide_url",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Bạn có thể tóm tắt video Youtube này không?"
+        },
+        {
+          "role": "assistant",
+          "content": "Vui lòng cung cấp URL của video Youtube bạn muốn tóm tắt.",
+          "tool_calls": [
+            {
+              "id": "call_123",
+              "type": "function",
+              "function": {
+                "name": "clarify",
+                "arguments": "{\"response_type\": \"text\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"response\": \"Đây nhé: https://youtube.com/watch?v=abc\"}",
+          "tool_call_id": "call_123"
+        },
+        {
+          "role": "user",
+          "content": "Tôi đã cung cấp URL, hãy tóm tắt nó."
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "youtube_summarizer",
+            "args": {
+              "url": "https://youtube.com/watch?v=abc"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Được cung cấp URL sau khi hỏi lại, gọi đúng tool tóm tắt."
+      }
+    },
+    {
+      "id": "M09_weather_follow_up",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Thời tiết ở London thế nào?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_456",
+              "type": "function",
+              "function": {
+                "name": "weather_forecast",
+                "arguments": "{\"location\": \"London\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"weather\": \"Trời mưa 15 độ\"}",
+          "tool_call_id": "call_456"
+        },
+        {
+          "role": "assistant",
+          "content": "Thời tiết ở London đang mưa và 15 độ."
+        },
+        {
+          "role": "user",
+          "content": "Thế còn ở Paris thì sao?"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_forecast",
+            "args": {
+              "location": "Paris"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Hiểu ngữ cảnh từ lượt trước để gọi thời tiết Paris."
+      }
+    },
+    {
+      "id": "M10_crypto_to_telegram",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Gửi giá BTC lên nhóm Telegram giúp tôi."
+        }
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Xác nhận boundary trước khi gửi tin nhắn Telegram."
+      }
+    },
+    {
+      "id": "M11_switch_tool_github_to_news",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm repo React trên Github đi."
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_789",
+              "type": "function",
+              "function": {
+                "name": "github_explorer",
+                "arguments": "{\"query\": \"React\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"items\": []}",
+          "tool_call_id": "call_789"
+        },
+        {
+          "role": "assistant",
+          "content": "Đã tìm trên Github."
+        },
+        {
+          "role": "user",
+          "content": "Thôi đừng tìm Github nữa, tìm tin tức trên web về React 19 đi."
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "React 19",
+              "topic": "news"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Chuyển từ tool github sang tool tìm tin tức (lookup) khi user đổi ý."
+      }
+    }
+  ]
+}

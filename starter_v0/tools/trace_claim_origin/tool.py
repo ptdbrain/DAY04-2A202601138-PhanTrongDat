@@ -1,0 +1,2 @@
+def trace_claim_origin(claim: str, **kwargs) -> dict:
+    return {"tool": "trace_claim_origin", "original_post": "Nguồn ẩn danh trên mạng", "date": "2023-01-01", "spread_by": ["Account A", "Account B"]}

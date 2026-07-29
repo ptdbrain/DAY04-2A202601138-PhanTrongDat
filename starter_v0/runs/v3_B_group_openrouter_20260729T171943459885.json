@@ -1,0 +1,736 @@
+{
+  "run_id": "v3_B_group_openrouter_20260729T171943459885",
+  "version": "v3",
+  "artifact_version": "v3+paadc78e97508+t03e576662172",
+  "prompt_hash": "aadc78e975088dc21d88b59f67df147c1269a1aed6c2be97ed2086406c89b290",
+  "tools_hash": "03e576662172844f3c488040e678957b0bc35cebe4e30ead05ef989475b0fdfa",
+  "phase": "B",
+  "suite": "group",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "D:\\Project\\AIthucchien\\DAY04-2A202601138-PhanTrongDat\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\Project\\AIthucchien\\DAY04-2A202601138-PhanTrongDat\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_group_eval",
+  "dataset_role": "eval",
+  "description": "10 cases for group G16",
+  "generated_at": "2026-07-29T17:19:43",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 10,
+    "case_accuracy": 1.0,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 1.0,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {},
+    "observed_mismatch_counts": {}
+  },
+  "results": [
+    {
+      "id": "T01_youtube_summarizer_single",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Gọi tool youtube_summarizer khi có URL hợp lệ."
+      },
+      "input": "Tóm tắt video youtube này giúp mình nhé: https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "youtube_summarizer",
+            "args": {
+              "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "youtube_summarizer",
+            "args": {
+              "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "youtube_summarizer",
+          "args": {
+            "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          },
+          "result": {
+            "error": "Thiếu thư viện youtube-transcript-api. Vui lòng chạy `pip install youtube-transcript-api`",
+            "text": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "T02_weather_forecast_single",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Gọi tool thời tiết với tham số thành phố đúng."
+      },
+      "input": "Thời tiết ở Tokyo hôm nay thế nào?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_forecast",
+            "args": {
+              "location": "Tokyo"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "weather_forecast",
+            "args": {
+              "location": "Tokyo"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "weather_forecast",
+          "args": {
+            "location": "Tokyo"
+          },
+          "result": {
+            "error": null,
+            "weather": "Tokyo: ☀️  +28°C"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T03_crypto_tracker_single",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Gọi tool crypto với mã giao dịch chính xác."
+      },
+      "input": "Tra cứu giá đồng Ethereum (ETH) hiện tại.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "crypto_tracker",
+            "args": {
+              "symbol": "ETH"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "crypto_tracker",
+            "args": {
+              "symbol": "ETH"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "crypto_tracker",
+          "args": {
+            "symbol": "ETH"
+          },
+          "result": {
+            "error": null,
+            "data": {
+              "symbol": "ETHUSDT",
+              "current_price": "1919.90000000",
+              "price_change_percent": "2.197%",
+              "volume": "279060.23710000"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "T04_github_explorer_single",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Tìm kiếm Github với đúng query và language."
+      },
+      "input": "Tìm kiếm các project AI bằng Python đang hot trên Github.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_explorer",
+            "args": {
+              "query": "AI",
+              "language": "Python"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "github_explorer",
+            "args": {
+              "query": "AI",
+              "language": "python",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "github_explorer",
+          "args": {
+            "query": "AI",
+            "language": "python",
+            "limit": 5
+          },
+          "result": {
+            "error": null,
+            "items": [
+              {
+                "name": "NousResearch/hermes-agent",
+                "description": "The agent that grows with you",
+                "stars": 222118,
+                "url": "https://github.com/NousResearch/hermes-agent"
+              },
+              {
+                "name": "Significant-Gravitas/AutoGPT",
+                "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+                "stars": 185746,
+                "url": "https://github.com/Significant-Gravitas/AutoGPT"
+              },
+              {
+                "name": "AUTOMATIC1111/stable-diffusion-webui",
+                "description": "Stable Diffusion web UI",
+                "stars": 164308,
+                "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui"
+              },
+              {
+                "name": "langflow-ai/langflow",
+                "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
+                "stars": 152561,
+                "url": "https://github.com/langflow-ai/langflow"
+              },
+              {
+                "name": "open-webui/open-webui",
+                "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+                "stars": 147190,
+                "url": "https://github.com/open-webui/open-webui"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T05_image_generator_single",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Gọi công cụ sinh ảnh khi có yêu cầu vẽ tranh."
+      },
+      "input": "Tạo cho mình một bức tranh về con mèo không gian.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "image_generator",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "image_generator",
+            "args": {
+              "prompt": "A space cat, with a colorful galaxy background, wearing a futuristic space suit, floating among stars and planets, with a playful expression."
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "image_generator",
+          "args": {
+            "prompt": "A space cat, with a colorful galaxy background, wearing a futuristic space suit, floating among stars and planets, with a playful expression."
+          },
+          "result": {
+            "error": null,
+            "image_url": "https://image.pollinations.ai/prompt/A%20space%20cat%2C%20with%20a%20colorful%20galaxy%20background%2C%20wearing%20a%20futuristic%20space%20suit%2C%20floating%20among%20stars%20and%20planets%2C%20with%20a%20playful%20expression.?width=800&height=400&nologo=true",
+            "markdown_code": "![A space cat, with a colorful galaxy background, wearing a futuristic space suit, floating among stars and planets, with a playful expression.](https://image.pollinations.ai/prompt/A%20space%20cat%2C%20with%20a%20colorful%20galaxy%20background%2C%20wearing%20a%20futuristic%20space%20suit%2C%20floating%20among%20stars%20and%20planets%2C%20with%20a%20playful%20expression.?width=800&height=400&nologo=true)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "M07_youtube_missing_url",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Yêu cầu tóm tắt nhưng thiếu URL thì phải hỏi lại."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Bạn có thể tóm tắt video Youtube này không?"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "question": "Bạn vui lòng cung cấp URL của video Youtube mà bạn muốn tóm tắt không?",
+              "response_type": "text"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn vui lòng cung cấp URL của video Youtube mà bạn muốn tóm tắt không?",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn vui lòng cung cấp URL của video Youtube mà bạn muốn tóm tắt không?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "M08_youtube_provide_url",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Được cung cấp URL sau khi hỏi lại, gọi đúng tool tóm tắt."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Bạn có thể tóm tắt video Youtube này không?"
+        },
+        {
+          "role": "assistant",
+          "content": "Vui lòng cung cấp URL của video Youtube bạn muốn tóm tắt.",
+          "tool_calls": [
+            {
+              "id": "call_123",
+              "type": "function",
+              "function": {
+                "name": "clarify",
+                "arguments": "{\"response_type\": \"text\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"response\": \"Đây nhé: https://youtube.com/watch?v=abc\"}",
+          "tool_call_id": "call_123"
+        },
+        {
+          "role": "user",
+          "content": "Tôi đã cung cấp URL, hãy tóm tắt nó."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "youtube_summarizer",
+            "args": {
+              "url": "https://youtube.com/watch?v=abc"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "youtube_summarizer",
+            "args": {
+              "url": "https://youtube.com/watch?v=abc"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "youtube_summarizer",
+          "args": {
+            "url": "https://youtube.com/watch?v=abc"
+          },
+          "result": {
+            "error": "Thiếu thư viện youtube-transcript-api. Vui lòng chạy `pip install youtube-transcript-api`",
+            "text": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "M09_weather_follow_up",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Hiểu ngữ cảnh từ lượt trước để gọi thời tiết Paris."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Thời tiết ở London thế nào?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_456",
+              "type": "function",
+              "function": {
+                "name": "weather_forecast",
+                "arguments": "{\"location\": \"London\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"weather\": \"Trời mưa 15 độ\"}",
+          "tool_call_id": "call_456"
+        },
+        {
+          "role": "assistant",
+          "content": "Thời tiết ở London đang mưa và 15 độ."
+        },
+        {
+          "role": "user",
+          "content": "Thế còn ở Paris thì sao?"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_forecast",
+            "args": {
+              "location": "Paris"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "weather_forecast",
+            "args": {
+              "location": "Paris"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "weather_forecast",
+          "args": {
+            "location": "Paris"
+          },
+          "result": {
+            "error": null,
+            "weather": "Paris: ☀️  +34°C"
+          }
+        }
+      ]
+    },
+    {
+      "id": "M10_crypto_to_telegram",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Xác nhận boundary trước khi gửi tin nhắn Telegram."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Gửi giá BTC lên nhóm Telegram giúp tôi."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "question": "Bạn có chắc chắn muốn gửi giá BTC lên nhóm Telegram không?",
+              "response_type": "yes_no"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn có chắc chắn muốn gửi giá BTC lên nhóm Telegram không?",
+            "response_type": "yes_no"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn có chắc chắn muốn gửi giá BTC lên nhóm Telegram không?",
+            "response_type": "yes_no",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "M11_switch_tool_github_to_news",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Chuyển từ tool github sang tool tìm tin tức (lookup) khi user đổi ý."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm repo React trên Github đi."
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_789",
+              "type": "function",
+              "function": {
+                "name": "github_explorer",
+                "arguments": "{\"query\": \"React\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"items\": []}",
+          "tool_call_id": "call_789"
+        },
+        {
+          "role": "assistant",
+          "content": "Đã tìm trên Github."
+        },
+        {
+          "role": "user",
+          "content": "Thôi đừng tìm Github nữa, tìm tin tức trên web về React 19 đi."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "React 19",
+              "topic": "news"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "React 19",
+              "topic": "news"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "React 19",
+            "topic": "news"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "React 19",
+            "topic": "news",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "19 Palm Beach County school employees lose jobs after Haiti TPS expiration - WPBF",
+                "url": "https://www.wpbf.com/article/florida-palm-beach-county-schools-haiti-tps-expiration/73289783",
+                "source": "wpbf.com",
+                "summary": "\"Temporary Protected Status (TPS) for Haiti expired on Monday, July 27, 2026. As a result, 19 District employees were separated from employment, as all School District employees must be legally authorized to work in the United States,\" the district said in a statement.\n\nAdvertisement\n\n'We're devastated': Community advocates react to TPS ending for Haitian migrants\n\n'We're devastated': Community advocates react to TPS ending for Haitian migrants [...] ## Share\n\n## Top Picks\n\nTrump invites teen lifeguard to White House for 'heroic' rescue at California beach\n\n### Trump invites teen lifeguard to White House for 'heroic' rescue at California beach\n\nWhy are kids turning to AI chatbots instead of adults? What new research says\n\n### Why are kids turning to AI chatbots instead of adults? What new research says\n\nWATCH: Plane made emergency landing on California beach after mechanical issue [...] ### WATCH: Plane made emergency landing on California beach after mechanical issue\n\nLindsey Graham honored in Capitol services, eulogized as an 'American original' with global reach\n\n### Lindsey Graham honored in Capitol services, eulogized as an 'American original' with global reach",
+                "score": 0.1649064
+              },
+              {
+                "title": "Options Traders, Analysts React to Brutal Tesla Earnings",
+                "url": "https://www.schaeffersresearch.com/content/news/2026/07/23/options-traders-analysts-react-to-brutal-tesla-earnings",
+                "source": "schaeffersresearch.com",
+                "summary": "Tesla reported adjusted second-quarter earnings of 33 cents per share on $28.24 billion in revenue, the former of which fell short of estimates. More importantly, the company reported negative free cash flow as capital expenditures surged. [...] This morning, six analysts trimmed their price targets, the worst coming from UBS to $385. Considering the consensus 12-month price target of $392.17 is a 19% premium from its current perch and the stock is down 27% in 2026, more bear notes could pressure TSLA lower. [...] SIR Logo\n5MRD\n\n# Options Traders, Analysts React to Brutal Tesla Earnings\n\n## Tesla's earnings whiff and cash burn have put Wall Street on notice\n\navatar\nfacebook\nX logo\nlinkedin\nTesla stock, TSLA stock, Tesla stock price, TSLA stock price\n\nTesla (NASDAQ:TSLA) stock is big contributor to the Nasdaq Composite (IXIC) selloff today. The EV maker is down 11.6% to trade at $330.64, and earlier traded as low as $325.60. The shares are headed for their worst single-session decline since June 2025.",
+                "score": 0.061182514
+              },
+              {
+                "title": "Local farmers react to cyclosporiasis outbreak linked to Taco Bell lettuce",
+                "url": "https://www.wbng.com/2026/07/23/local-farmers-react-cyclosporiasis-outbreak-linked-taco-bell-lettuce",
+                "source": "wbng.com",
+                "summary": "###### SAFE Act\n\n###### Broome County sheriff launches targeted enforcement in Town of Union over E-bike and dirt bike misuse\n\n###### Binghamton Plaza demolition on track as city nears end of environmental testing\n\n###### Kraham credits state GIVE funding as Binghamton sees no gun-related murders in six months [...] ###### Busiest US death chamber: Florida executes 2 men in a day, including an octogenarian\n\n#### Latest News\n\n###### Crews respond to house fire in Harpursville\n\n###### Crews respond to house fire in Harpursville\n\n###### Broome Co. Sheriff’s Office to end agreement with ICE following state law\n\n###### Hochul and Letitia James issue final rules for New York SAFE for Kids Act\n\n###### SAFE Act [...] ###### Tractor-trailer rollover closes I-81 northbound between exits 7 and 8 in Castle Creek\n\n###### Binghamton house fire caused by lit candle\n\n###### Cellphone users report outages across major carriers\n\n###### Endicott plans all-way stop with flashing signs at Oak Hill Avenue and Witherill Street\n\n###### Influencer killed by husband after she accused him of pedophilia on TikTok, reports say\n\n###### Susquehanna SPCA closes temporarily amid parvovirus quarantine",
+                "score": 0.055275057
+              },
+              {
+                "title": "How much pressure is on Lane Kiffin in his first year at LSU? 👀 Joel Klatt Show | FOX Sports",
+                "url": "https://www.foxsports.com/watch/fmc-g6cx906c90x4p26h",
+                "source": "foxsports.com",
+                "summary": "### Would it make sense for the SEC to break off on their own? 👀 Joel Klatt Show\n\nJoel Klatt reacts to Greg Sankey's statement saying the SEC is still the best conference 😲 Joel Klatt Show \n\n### Joel Klatt reacts to Greg Sankey's statement saying the SEC is still the best conference 😲 Joel Klatt Show\n\nLSU and USC in Big Ten-SEC matchups Joel Klatt wants to see 👀 Joel Klatt Show \n\n### LSU and USC in Big Ten-SEC matchups Joel Klatt wants to see 👀 Joel Klatt Show [...] NFL\nCollege Football\nINDYCAR Image\nMLB\nCollege Basketball\nNASCAR Image\nThe Herd with Colin Cowherd\nFirst Things First\nThe Joel Klatt Show logo\nKevin Harvick's Happy Hour logo\nBear Bets logo\nFOX Sports\nFOX One\nBest Betting Apps Image\nBest Sportsbook Promos Image\nCalifornia Consumer Privacy Act (CCPA) Opt-Out Icon\nFox Sports facebook\nFox Sports facebook\nFox Sports instagram\nFox Sports instagram\nFox Sports x\nFox Sports x\nFox Sports youtube\nFox Sports youtube\nFox Sports rss\nFox Sports rss [...] ### Illinois is a sell team in Joel Klatt's stock watch 👀 Joel Klatt Show\n\nLSU is a buy team in Joel Klatt's stock watch 👀 Joel Klatt Show \n\n### LSU is a buy team in Joel Klatt's stock watch 👀 Joel Klatt Show\n\nTexas Tech responds to Steve Sarkisian and offers to play Texas week 1 👀 Joel Klatt Show \n\n### Texas Tech responds to Steve Sarkisian and offers to play Texas week 1 👀 Joel Klatt Show\n\nWould it make sense for the SEC to break off on their own? 👀 Joel Klatt Show",
+                "score": 0.046625108
+              },
+              {
+                "title": "Neighbors react to suspect's arrest in North Royalton shooting",
+                "url": "https://www.cleveland19.com/video/2026/07/27/neighbors-react-suspects-arrest-north-royalton-shooting",
+                "source": "cleveland19.com",
+                "summary": "Neighbors react to suspect's arrest in North Royalton shooting. Published: Jul. 27, 2026 at 12:14 PM PDT. Share. Add Us On GoogleAdd as a preferred source",
+                "score": 0.044835445
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

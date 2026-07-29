@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+
+# Secrets — never commit real keys
+.env
+.env.*
+!.env.example
+
+# Instructor-only — must NOT ship to the public student repo
+INTERNAL-DEMO-SCRIPT.md
+starter/
+
+# Tool scratch output
+arxiv_papers/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

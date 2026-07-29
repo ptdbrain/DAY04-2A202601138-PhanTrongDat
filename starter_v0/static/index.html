@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Research Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <!-- Load Highlight.js for code syntax highlighting in responses -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
+    <link rel="stylesheet" href="/static/style.css?v=2">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <div class="logo-box">
+                        <i class="ri-pulse-line"></i>
+                    </div>
+                    <span class="brand-name">Aether Research</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-label">Workspace</div>
+                    <a href="#" class="nav-item active">
+                        <i class="ri-chat-3-line"></i>
+                        <span>Chat Session</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="ri-history-line"></i>
+                        <span>History</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-label">Configuration</div>
+                    <a href="#" class="nav-item">
+                        <i class="ri-settings-4-line"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar-small">U</div>
+                    <div class="user-info">
+                        <span class="username">User</span>
+                        <span class="status">Online</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <h1 class="page-title">Research Workspace</h1>
+                    <span class="badge" id="artifact-version-badge">v3</span>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-secondary" id="clear-btn">
+                        <i class="ri-delete-bin-line"></i> Clear
+                    </button>
+                </div>
+            </header>
+
+            <div class="chat-container">
+                <div class="chat-scroll-area" id="chat-messages">
+                    <!-- Initial System Message -->
+                    <div class="message system-msg">
+                        <div class="msg-avatar system">
+                            <i class="ri-terminal-box-line"></i>
+                        </div>
+                        <div class="msg-content">
+                            <p>Agent initialized. Connected to OpenRouter. Ready for instructions.</p>
+                            <p class="transcript-info" id="transcript-info"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="typing-indicator hidden" id="typing-indicator">
+                    <span>Agent is thinking</span>
+                    <span class="dots">
+                        <span>.</span><span>.</span><span>.</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="input-box">
+                    <textarea id="user-input" placeholder="Enter research query..." rows="1"></textarea>
+                    <button id="send-btn" class="btn btn-primary" aria-label="Send">
+                        <i class="ri-corner-down-left-line"></i>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <span>Press <strong>Enter</strong> to send, <strong>Shift + Enter</strong> for new line.</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Template for Tool Trace -->
+    <template id="tool-trace-template">
+        <div class="tool-call">
+            <div class="tool-call-header">
+                <div class="tool-call-title">
+                    <i class="ri-code-box-line"></i>
+                    <span class="tool-name"></span>
+                </div>
+                <button class="toggle-btn"><i class="ri-arrow-down-s-line"></i></button>
+            </div>
+            <div class="tool-call-body collapsed">
+                <div class="code-block">
+                    <div class="code-header">Arguments</div>
+                    <pre><code class="args-content"></code></pre>
+                </div>
+                <div class="code-block">
+                    <div class="code-header">Result</div>
+                    <pre><code class="result-content"></code></pre>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>

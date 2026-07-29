@@ -1,0 +1,61 @@
+{
+  "dataset_id": "day04_v2_group_schema_example_only",
+  "dataset_role": "example",
+  "description": "Ví dụ schema để tham khảo; 2 case này không tính vào 10 case do team tự viết và không được nộp thay eval_group.json.",
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "EX01_single_tool_call",
+      "phase": "B",
+      "query": "Tìm tin robotics trong tuần này.",
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "robotics",
+              "topic": "news",
+              "timeframe": "week"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Ví dụ single-turn: chấm tên tool và subset arguments."
+      }
+    },
+    {
+      "id": "EX02_multi_no_tool",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tin AI hôm nay."
+        },
+        {
+          "role": "user",
+          "content": "Thôi không cần tìm nữa."
+        },
+        {
+          "role": "user",
+          "content": "Chỉ cho biết bạn có những khả năng gì."
+        }
+      ],
+      "failure_type": "unnecessary_tool",
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "what_it_tests": "Ví dụ multi-turn: chỉ turn user cuối được chấm; yêu cầu hiện tại không cần tool."
+      }
+    }
+  ]
+}

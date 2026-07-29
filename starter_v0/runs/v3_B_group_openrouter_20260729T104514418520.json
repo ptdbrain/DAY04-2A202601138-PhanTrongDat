@@ -1,0 +1,736 @@
+{
+  "run_id": "v3_B_group_openrouter_20260729T104514418520",
+  "version": "v3",
+  "artifact_version": "v3+p61f8253f6b67+t32e4430f77c8",
+  "prompt_hash": "61f8253f6b676169c2ace1a43a4fae419ceb4aff8c991d9f2f038da13e2cea08",
+  "tools_hash": "32e4430f77c8200340fc2d9197a98d21b959bcd7477f83410a5bf78c352d4e32",
+  "phase": "B",
+  "suite": "group",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "E:\\AI2026\\Day04_G16_E403\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "E:\\AI2026\\Day04_G16_E403\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_group_eval",
+  "dataset_role": "eval",
+  "description": "10 cases for group G16",
+  "generated_at": "2026-07-29T10:45:14",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 10,
+    "case_accuracy": 1.0,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 1.0,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {},
+    "observed_mismatch_counts": {}
+  },
+  "results": [
+    {
+      "id": "T01_youtube_summarizer_single",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Gọi tool youtube_summarizer khi có URL hợp lệ."
+      },
+      "input": "Tóm tắt video youtube này giúp mình nhé: https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "youtube_summarizer",
+            "args": {
+              "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "youtube_summarizer",
+            "args": {
+              "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "youtube_summarizer",
+          "args": {
+            "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          },
+          "result": {
+            "error": null,
+            "text": "[♪♪♪] ♪ We're no strangers to love ♪ ♪ You know the rules\nand so do I ♪ ♪ A full commitment's\nwhat I'm thinking of ♪ ♪ You wouldn't get this\nfrom any other guy ♪ ♪ I just wanna tell you\nhow I'm feeling ♪ ♪ Gotta make you understand ♪ ♪ Never gonna give you up ♪ ♪ Never gonna let you down ♪ ♪ Never gonna run around\nand desert you ♪ ♪ Never gonna make you cry ♪ ♪ Never gonna say goodbye ♪ ♪ Never gonna tell a lie\nand hurt you ♪ ♪ We've known each other\nfor so long ♪ ♪ Your heart's been aching\nbut you're too shy to say it ♪ ♪ Inside we both know\nwhat's been going ♪ ♪ We know the game\nand we're gonna play it ♪ ♪ And if you ask me\nhow I'm feeling ♪ ♪ Don't tell me\nyou're too blind to see ♪ ♪ Never gonna give you up ♪ ♪ Never gonna let you down ♪ ♪ Never gonna run around\nand desert you ♪ ♪ Never gonna make you cry ♪ ♪ Never gonna say goodbye ♪ ♪ Never gonna tell a lie\nand hurt you ♪ ♪ Never gonna give you up ♪ ♪ Never gonna let you down ♪ ♪ Never gonna run around\nand desert you ♪ ♪ Never gonna make you cry ♪ ♪ Never gonna say goodbye ♪ ♪ Never gonna tell a lie\nand hurt you ♪ ♪ (Ooh, give you up) ♪ ♪ (Ooh, give you up) ♪ ♪ Never gonna give,\nnever gonna give ♪ ♪ (Give you up) ♪ ♪ Never gonna give,\nnever gonna give ♪ ♪ (Give you up) ♪ ♪ We've known each other\nfor so long ♪ ♪ Your heart's been aching\nbut you're too shy to say it ♪ ♪ Inside we both know\nwhat's been going ♪ ♪ We know the game\nand we're gonna play it ♪ ♪ I just wanna tell you\nhow I'm feeling ♪ ♪ Gotta make you understand ♪ ♪ Never gonna give you up ♪ ♪ Never gonna let you down ♪ ♪ Never gonna run around\nand desert you ♪ ♪ Never gonna make you cry ♪ ♪ Never gonna say goodbye ♪ ♪ Never gonna tell a lie\nand hurt you ♪ ♪ Never gonna give you up ♪ ♪ Never gonna let you down ♪ ♪ Never gonna run around\nand desert you ♪ ♪ Never gonna make you cry ♪ ♪ Never gonna say goodbye ♪ ♪ Never gonna tell a lie\nand hurt you ♪ ♪ Never gonna give you up ♪ ♪ Never gonna let you down ♪ ♪ Never gonna run around\nand desert you ♪ ♪ Never gonna make you cry ♪ ♪ Never gonna say goodbye ♪ ♪ Never gonna tell a lie\nand hurt you ♪"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T02_weather_forecast_single",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Gọi tool thời tiết với tham số thành phố đúng."
+      },
+      "input": "Thời tiết ở Tokyo hôm nay thế nào?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_forecast",
+            "args": {
+              "location": "Tokyo"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "weather_forecast",
+            "args": {
+              "location": "Tokyo"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "weather_forecast",
+          "args": {
+            "location": "Tokyo"
+          },
+          "result": {
+            "error": null,
+            "weather": "Tokyo: ☀️  +27°C"
+          }
+        }
+      ]
+    },
+    {
+      "id": "T03_crypto_tracker_single",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Gọi tool crypto với mã giao dịch chính xác."
+      },
+      "input": "Tra cứu giá đồng Ethereum (ETH) hiện tại.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "crypto_tracker",
+            "args": {
+              "symbol": "ETH"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "crypto_tracker",
+            "args": {
+              "symbol": "ETH"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "crypto_tracker",
+          "args": {
+            "symbol": "ETH"
+          },
+          "result": {
+            "error": null,
+            "data": {
+              "symbol": "ETHUSDT",
+              "current_price": "1897.68000000",
+              "price_change_percent": "0.808%",
+              "volume": "273170.61630000"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "T04_github_explorer_single",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Tìm kiếm Github với đúng query và language."
+      },
+      "input": "Tìm kiếm các project AI bằng Python đang hot trên Github.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_explorer",
+            "args": {
+              "query": "AI",
+              "language": "Python"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "github_explorer",
+            "args": {
+              "query": "AI",
+              "language": "python",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "github_explorer",
+          "args": {
+            "query": "AI",
+            "language": "python",
+            "limit": 5
+          },
+          "result": {
+            "error": null,
+            "items": [
+              {
+                "name": "NousResearch/hermes-agent",
+                "description": "The agent that grows with you",
+                "stars": 221974,
+                "url": "https://github.com/NousResearch/hermes-agent"
+              },
+              {
+                "name": "Significant-Gravitas/AutoGPT",
+                "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+                "stars": 185739,
+                "url": "https://github.com/Significant-Gravitas/AutoGPT"
+              },
+              {
+                "name": "AUTOMATIC1111/stable-diffusion-webui",
+                "description": "Stable Diffusion web UI",
+                "stars": 164294,
+                "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui"
+              },
+              {
+                "name": "langflow-ai/langflow",
+                "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
+                "stars": 152548,
+                "url": "https://github.com/langflow-ai/langflow"
+              },
+              {
+                "name": "open-webui/open-webui",
+                "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+                "stars": 147137,
+                "url": "https://github.com/open-webui/open-webui"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "T05_image_generator_single",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "what_it_tests": "Gọi công cụ sinh ảnh khi có yêu cầu vẽ tranh."
+      },
+      "input": "Tạo cho mình một bức tranh về con mèo không gian.",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "image_generator",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "image_generator",
+            "args": {
+              "prompt": "A whimsical illustration of a space cat, featuring a fluffy cat wearing a futuristic space suit, floating among colorful planets and stars in a vibrant galaxy. The cat has big, curious eyes and a playful expression, with a backdrop of swirling nebulae and twinkling stars."
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "image_generator",
+          "args": {
+            "prompt": "A whimsical illustration of a space cat, featuring a fluffy cat wearing a futuristic space suit, floating among colorful planets and stars in a vibrant galaxy. The cat has big, curious eyes and a playful expression, with a backdrop of swirling nebulae and twinkling stars."
+          },
+          "result": {
+            "error": null,
+            "image_url": "https://image.pollinations.ai/prompt/A%20whimsical%20illustration%20of%20a%20space%20cat%2C%20featuring%20a%20fluffy%20cat%20wearing%20a%20futuristic%20space%20suit%2C%20floating%20among%20colorful%20planets%20and%20stars%20in%20a%20vibrant%20galaxy.%20The%20cat%20has%20big%2C%20curious%20eyes%20and%20a%20playful%20expression%2C%20with%20a%20backdrop%20of%20swirling%20nebulae%20and%20twinkling%20stars.?width=800&height=400&nologo=true",
+            "markdown_code": "![A whimsical illustration of a space cat, featuring a fluffy cat wearing a futuristic space suit, floating among colorful planets and stars in a vibrant galaxy. The cat has big, curious eyes and a playful expression, with a backdrop of swirling nebulae and twinkling stars.](https://image.pollinations.ai/prompt/A%20whimsical%20illustration%20of%20a%20space%20cat%2C%20featuring%20a%20fluffy%20cat%20wearing%20a%20futuristic%20space%20suit%2C%20floating%20among%20colorful%20planets%20and%20stars%20in%20a%20vibrant%20galaxy.%20The%20cat%20has%20big%2C%20curious%20eyes%20and%20a%20playful%20expression%2C%20with%20a%20backdrop%20of%20swirling%20nebulae%20and%20twinkling%20stars.?width=800&height=400&nologo=true)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "M07_youtube_missing_url",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Yêu cầu tóm tắt nhưng thiếu URL thì phải hỏi lại."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Bạn có thể tóm tắt video Youtube này không?"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "question": "Vui lòng cung cấp đường dẫn URL của video YouTube mà bạn muốn tóm tắt.",
+              "response_type": "text"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Vui lòng cung cấp đường dẫn URL của video YouTube mà bạn muốn tóm tắt.",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Vui lòng cung cấp đường dẫn URL của video YouTube mà bạn muốn tóm tắt.",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "M08_youtube_provide_url",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Được cung cấp URL sau khi hỏi lại, gọi đúng tool tóm tắt."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Bạn có thể tóm tắt video Youtube này không?"
+        },
+        {
+          "role": "assistant",
+          "content": "Vui lòng cung cấp URL của video Youtube bạn muốn tóm tắt.",
+          "tool_calls": [
+            {
+              "id": "call_123",
+              "type": "function",
+              "function": {
+                "name": "clarify",
+                "arguments": "{\"response_type\": \"text\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"response\": \"Đây nhé: https://youtube.com/watch?v=abc\"}",
+          "tool_call_id": "call_123"
+        },
+        {
+          "role": "user",
+          "content": "Tôi đã cung cấp URL, hãy tóm tắt nó."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "youtube_summarizer",
+            "args": {
+              "url": "https://youtube.com/watch?v=abc"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "youtube_summarizer",
+            "args": {
+              "url": "https://youtube.com/watch?v=abc"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "youtube_summarizer",
+          "args": {
+            "url": "https://youtube.com/watch?v=abc"
+          },
+          "result": {
+            "error": "Không thể lấy transcript từ Youtube: \nCould not retrieve a transcript for the video https://www.youtube.com/watch?v=abc! This is most likely caused by:\n\nThe video is no longer available\n\nIf you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!",
+            "text": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "M09_weather_follow_up",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Hiểu ngữ cảnh từ lượt trước để gọi thời tiết Paris."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Thời tiết ở London thế nào?"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_456",
+              "type": "function",
+              "function": {
+                "name": "weather_forecast",
+                "arguments": "{\"location\": \"London\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"weather\": \"Trời mưa 15 độ\"}",
+          "tool_call_id": "call_456"
+        },
+        {
+          "role": "assistant",
+          "content": "Thời tiết ở London đang mưa và 15 độ."
+        },
+        {
+          "role": "user",
+          "content": "Thế còn ở Paris thì sao?"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_forecast",
+            "args": {
+              "location": "Paris"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "weather_forecast",
+            "args": {
+              "location": "Paris"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "weather_forecast",
+          "args": {
+            "location": "Paris"
+          },
+          "result": {
+            "error": null,
+            "weather": "Paris: ☀️  +22°C"
+          }
+        }
+      ]
+    },
+    {
+      "id": "M10_crypto_to_telegram",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Xác nhận boundary trước khi gửi tin nhắn Telegram."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Gửi giá BTC lên nhóm Telegram giúp tôi."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "question": "Bạn có chắc chắn muốn gửi giá BTC lên nhóm Telegram?",
+              "response_type": "yes_no"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn có chắc chắn muốn gửi giá BTC lên nhóm Telegram?",
+            "response_type": "yes_no"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn có chắc chắn muốn gửi giá BTC lên nhóm Telegram?",
+            "response_type": "yes_no",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "M11_switch_tool_github_to_news",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "what_it_tests": "Chuyển từ tool github sang tool tìm tin tức (lookup) khi user đổi ý."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm repo React trên Github đi."
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "id": "call_789",
+              "type": "function",
+              "function": {
+                "name": "github_explorer",
+                "arguments": "{\"query\": \"React\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"items\": []}",
+          "tool_call_id": "call_789"
+        },
+        {
+          "role": "assistant",
+          "content": "Đã tìm trên Github."
+        },
+        {
+          "role": "user",
+          "content": "Thôi đừng tìm Github nữa, tìm tin tức trên web về React 19 đi."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "React 19",
+              "topic": "news"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "React 19",
+              "topic": "news"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "React 19",
+            "topic": "news"
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "React 19",
+            "topic": "news",
+            "timeframe": "week",
+            "items": [
+              {
+                "title": "19 Palm Beach County school employees lose jobs after ...",
+                "url": "https://www.wpbf.com/article/florida-palm-beach-county-schools-haiti-tps-expiration/73289783",
+                "source": "wpbf.com",
+                "summary": "\"Temporary Protected Status (TPS) for Haiti expired on Monday, July 27, 2026. As a result, 19 District employees were separated from employment, as all School District employees must be legally authorized to work in the United States,\" the district said in a statement.\n\nAdvertisement\n\n'We're devastated': Community advocates react to TPS ending for Haitian migrants\n\n'We're devastated': Community advocates react to TPS ending for Haitian migrants [...] ## Share\n\n## Top Picks\n\nTrump invites teen lifeguard to White House for 'heroic' rescue at California beach\n\n### Trump invites teen lifeguard to White House for 'heroic' rescue at California beach\n\nWhy are kids turning to AI chatbots instead of adults? What new research says\n\n### Why are kids turning to AI chatbots instead of adults? What new research says\n\nWATCH: Plane made emergency landing on California beach after mechanical issue [...] John Iz\n\nJohn IzEmail\n\nAssignment Editor\n\nPALM BEACH COUNTY, Fla. —\n\nThe Palm Beach County School District announced that 19 employees lost their jobs following the expiration of Temporary Protected Status (TPS) for Haiti on Monday, July 27.",
+                "score": 0.18961145
+              },
+              {
+                "title": "How Will Nucor Stock React To Its Upcoming Earnings? | Trefis",
+                "url": "https://www.trefis.com/stock/nue/articles/608774/how-will-nucor-stock-react-to-its-upcoming-earnings-2/2026-07-24",
+                "source": "trefis.com",
+                "summary": "There are 19 earnings data points recorded over the last five years, with 10 positive and 9 negative one-day (1D) returns observed. In summary, positive 1D returns were seen about 53% of the time.\n Notably, this percentage increases to 58% if we consider data for the last 3 years instead of 5.\n Median of the 10 positive returns = 4.7%, and median of the 9 negative returns = -2.7% [...] | Earnings Date | 1D | 5D | 21D |\n| 4/27/2026 | 4.7% | 5.0% | 14.6% |\n| 1/26/2026 | -2.3% | 1.9% | -1.2% |\n| 10/27/2025 | 5.4% | 2.7% | 8.4% |\n| 7/28/2025 | -2.7% | -5.2% | 2.4% |\n| 4/28/2025 | 1.9% | 3.4% | -6.6% |\n| 1/27/2025 | 3.8% | 7.6% | 10.3% |\n| 10/21/2024 | -6.5% | -5.4% | -7.3% |\n| 7/22/2024 | -1.1% | -2.4% | -12.2% |\n| 4/22/2024 | -8.9% | -8.6% | -10.2% |\n| 1/29/2024 | 6.9% | 3.2% | 8.8% |\n| 10/23/2023 | 4.8% | 6.0% | 12.3% |\n| 7/24/2023 | 3.7% | 3.3% | 1.1% | [...] | 1D Return | Peer Post-Earnings 1D Return |\n --- |\n| NUE Earnings Dates | NUE | STLD | CLF | CMC |\n| 4/27/2026 | 4.7% | 8.7% | -8.1% | N/A\\ |\n| 1/26/2026 | -2.3% | N/A\\ | N/A\\ | -1.0% |\n| 10/27/2025 | 5.4% | 1.6% | 0.5% | -3.9% |\n| 7/28/2025 | -2.7% | -2.8% | 19.4% | N/A\\ |\n| 4/28/2025 | 1.9% | 8.5% | N/A\\ | N/A\\ |\n| 1/27/2025 | 3.8% | -0.4% | N/A\\ | 0.0% |\n| 10/21/2024 | -6.5% | 5.2% | N/A\\ | 4.5% |\n| 7/22/2024 | -1.1% | -1.3% | N/A\\ | N/A\\ |\n| 1/29/2024 | 6.9% | -0.2% | N/A\\ | 2.3% |",
+                "score": 0.18378432
+              },
+              {
+                "title": "Options Traders, Analysts React to Brutal Tesla Earnings",
+                "url": "https://www.schaeffersresearch.com/content/news/2026/07/23/options-traders-analysts-react-to-brutal-tesla-earnings",
+                "source": "schaeffersresearch.com",
+                "summary": "Tesla reported adjusted second-quarter earnings of 33 cents per share on $28.24 billion in revenue, the former of which fell short of estimates. More importantly, the company reported negative free cash flow as capital expenditures surged. [...] This morning, six analysts trimmed their price targets, the worst coming from UBS to $385. Considering the consensus 12-month price target of $392.17 is a 19% premium from its current perch and the stock is down 27% in 2026, more bear notes could pressure TSLA lower. [...] SIR Logo\n5MRD\n\n# Options Traders, Analysts React to Brutal Tesla Earnings\n\n## Tesla's earnings whiff and cash burn have put Wall Street on notice\n\navatar\nfacebook\nX logo\nlinkedin\nTesla stock, TSLA stock, Tesla stock price, TSLA stock price\n\nTesla (NASDAQ:TSLA) stock is big contributor to the Nasdaq Composite (IXIC) selloff today. The EV maker is down 11.6% to trade at $330.64, and earlier traded as low as $325.60. The shares are headed for their worst single-session decline since June 2025.",
+                "score": 0.061182514
+              },
+              {
+                "title": "Tyrone Taylor hits two-run double, to cut Mets' deficit vs. Dodgers | FOX Sports",
+                "url": "https://www.foxsports.com/watch/fmc-gjwxcnh2lg39k0a7",
+                "source": "foxsports.com",
+                "summary": "2:07\n\n### Patti Labelle Performs National Anthem at 2026 MLB All-Star Game\n\nTop Leagues\n\nNFL NFLCollege Football College FootballINDYCAR Image INDYCARMLB MLBCollege Basketball College BasketballNASCAR Image NASCAR\n\nTop Shows\n\nThe Herd with Colin Cowherd The Herd with Colin CowherdFirst Things First First Things FirstThe Joel Klatt Show logo The Joel Klatt ShowKevin Harvick's Happy Hour logo Kevin Harvick's Happy HourBear Bets logo Bear Bets\n\nAffiliated Apps [...] my favs\n\nAccess and manage your favorites here\n\n SPORTS & TEAMS\n PLAYERS\n SHOWS\n PERSONALITIES\n TOPICS\n\nTyrone Taylor hits two-run double, to cut Mets' deficit vs. Dodgers\n\nshare\n\nshare on facebookfacebookshare on xxshare on redditredditshare on linklink\n\n# Tyrone Taylor hits two-run double, to cut Mets' deficit vs. Dodgers\n\nVideo Details\n\n## Tyrone Taylor hit a two-run double that cut the Los Angeles Dodgers' lead over the New York Mets to 4-3.\n\n20 HOURS AGO・Major League Baseball・0:19 [...] 2:54\n\n### 2026 MLB All-Star Game ❤️ Heartwarming Tribute to Baseball Set to Ray Charles' Moving Rendition of 'America the Beautiful'\n\nCody Bellinger & Ben Rice drive in three runs for AL to take early lead over NL\n\n0:36\n\n### Cody Bellinger & Ben Rice drive in three runs for AL to take early lead over NL\n\nAmerica's Pastime: A Reflection of the American Character\n\n7:44\n\n### America's Pastime: A Reflection of the American Character\n\nPatti Labelle Performs National Anthem at 2026 MLB All-Star Game",
+                "score": 0.03604667
+              },
+              {
+                "title": "Supermarket squeeze: Grocers react to sales slump",
+                "url": "https://www.cleveland19.com/video/2026/07/22/supermarket-squeeze-grocers-react-sales-slump",
+                "source": "cleveland19.com",
+                "summary": "Squeezed consumers are putting fewer items in their baskets amid the parasitic outbreak. (CNN)",
+                "score": 0.035521045
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

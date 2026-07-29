@@ -1,0 +1,34 @@
+{
+  "artifact_version": "v3+paadc78e97508+t03e576662172",
+  "history": [
+    {
+      "role": "user",
+      "content": "hôm nay thời tiết thế nào"
+    },
+    {
+      "role": "assistant",
+      "content": "Hôm nay, thời tiết tại Hà Nội là mưa rào với nhiệt độ khoảng 26°C."
+    },
+    {
+      "role": "user",
+      "content": "ở Đại học Vinuni thì sao"
+    },
+    {
+      "role": "assistant",
+      "content": "Thời tiết tại Đại học Vinuni hiện đang có mưa rào với nhiệt độ khoảng 28°C."
+    }
+  ],
+  "tool_events": [
+    {
+      "tool": "weather_forecast",
+      "args": {
+        "location": "Đại học Vinuni"
+      },
+      "result": {
+        "error": null,
+        "weather": "Đại học Vinuni: 🌩️  +28°C"
+      }
+    }
+  ],
+  "updated_at": "2026-07-29T17:24:47"
+}

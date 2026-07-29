@@ -1,0 +1,1 @@
+# inspect_media_metadata\n\nKiểm tra EXIF, thời gian tạo, phần mềm chỉnh sửa của tệp.

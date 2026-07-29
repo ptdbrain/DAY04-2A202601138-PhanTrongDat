@@ -1,0 +1,640 @@
+{
+  "run_id": "v5_B_group_openrouter_20260729T163936399553",
+  "version": "v5",
+  "artifact_version": "v5+p06722b45edf7+t29e8dff29c75",
+  "prompt_hash": "06722b45edf772bccf416bf5d9b410473bac888cbe63c27351c495d3db0ee9e9",
+  "tools_hash": "29e8dff29c75d0472a4941087077650ef6a5bafdfac41300e0f3275d61bcf0a4",
+  "phase": "B",
+  "suite": "group",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "D:\\Project\\AIthucchien\\DAY04-2A202601138-PhanTrongDat\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\Project\\AIthucchien\\DAY04-2A202601138-PhanTrongDat\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Fact-checking workflow evaluation cases checking custom fact-check tools routing and args.",
+  "generated_at": "2026-07-29T16:39:36",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 10,
+    "case_accuracy": 1.0,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 1.0,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {},
+    "observed_mismatch_counts": {}
+  },
+  "results": [
+    {
+      "id": "G01_extract_claims",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_extract_claims",
+        "difficulty": "easy",
+        "what_it_tests": "Gọi tool extract_atomic_claims để phân rã bài viết."
+      },
+      "input": "Bóc tách các mệnh đề từ văn bản này giúp tôi: Người dân hoang mang vì virus mới lây qua không khí",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "extract_atomic_claims",
+            "args": {
+              "text": "Người dân hoang mang vì virus mới lây qua không khí"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "extract_atomic_claims",
+            "args": {
+              "text": "Người dân hoang mang vì virus mới lây qua không khí"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "extract_atomic_claims",
+          "args": {
+            "text": "Người dân hoang mang vì virus mới lây qua không khí"
+          },
+          "result": {
+            "tool": "extract_atomic_claims",
+            "claims": [
+              {
+                "claim": "Mệnh đề 1",
+                "priority": "High"
+              },
+              {
+                "claim": "Mệnh đề 2",
+                "priority": "Low"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_trace_origin",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_trace_origin",
+        "difficulty": "easy",
+        "what_it_tests": "Gọi tool trace_claim_origin để tìm Patient Zero."
+      },
+      "input": "Hãy tìm nguồn xuất hiện sớm nhất của tin đồn: Vaccine Covid chứa chip 5G",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "trace_claim_origin",
+            "args": {
+              "claim": "Vaccine Covid chứa chip 5G"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "trace_claim_origin",
+            "args": {
+              "claim": "vaccine Covid chứa chip 5G"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "trace_claim_origin",
+          "args": {
+            "claim": "vaccine Covid chứa chip 5G"
+          },
+          "result": {
+            "tool": "trace_claim_origin",
+            "original_post": "Nguồn ẩn danh trên mạng",
+            "date": "2023-01-01",
+            "spread_by": [
+              "Account A",
+              "Account B"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G03_archive_lookup",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_archive_lookup",
+        "difficulty": "easy",
+        "what_it_tests": "Gọi tool archive_lookup cho một URL."
+      },
+      "input": "Tra cứu bài viết cũ tại đường dẫn này trên kho lưu trữ xem đã bị sửa đổi chưa: https://example.com/fake-news",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "archive_lookup",
+            "args": {
+              "url": "https://example.com/fake-news"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "archive_lookup",
+            "args": {
+              "url": "https://example.com/fake-news"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "archive_lookup",
+          "args": {
+            "url": "https://example.com/fake-news"
+          },
+          "result": {
+            "tool": "archive_lookup",
+            "archived_version": "https://archive.org/dummy",
+            "changes": [
+              "Đã xóa đoạn quan trọng"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G04_reverse_media",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_reverse_media",
+        "difficulty": "easy",
+        "what_it_tests": "Gọi tool reverse_media_search cho ảnh."
+      },
+      "input": "Tìm kiếm ngược hình ảnh này để xem xuất hiện từ bao giờ: https://example.com/image.jpg",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "reverse_media_search",
+            "args": {
+              "media_url": "https://example.com/image.jpg"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "reverse_media_search",
+            "args": {
+              "media_url": "https://example.com/image.jpg"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "reverse_media_search",
+          "args": {
+            "media_url": "https://example.com/image.jpg"
+          },
+          "result": {
+            "tool": "reverse_media_search",
+            "earliest_appearance": "2020-05-12",
+            "original_context": "Ảnh cũ bị đào lại"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G05_credibility",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_source_credibility",
+        "difficulty": "easy",
+        "what_it_tests": "Gọi tool source_credibility_score đánh giá nguồn."
+      },
+      "input": "Đánh giá độ uy tín của nguồn tin này giúp tôi: vnexpress.net",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "source_credibility_score",
+            "args": {
+              "source": "vnexpress.net"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "source_credibility_score",
+            "args": {
+              "source": "vnexpress.net"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "source_credibility_score",
+          "args": {
+            "source": "vnexpress.net"
+          },
+          "result": {
+            "tool": "source_credibility_score",
+            "score": 3.5,
+            "max_score": 10,
+            "warning": "Nguồn thường xuyên đăng tin clickbait"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G06_multi_media_inspect",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_media_metadata",
+        "difficulty": "medium",
+        "what_it_tests": "Lượt 2 yêu cầu check metadata từ ảnh ở lượt 1."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tôi muốn phân tích hình ảnh này: https://example.com/photo.jpg"
+        },
+        {
+          "role": "user",
+          "content": "Hãy kiểm tra xem nó có bị chỉnh sửa bằng phần mềm gì không"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "inspect_media_metadata",
+            "args": {
+              "media_url": "https://example.com/photo.jpg"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "inspect_media_metadata",
+            "args": {
+              "media_url": "https://example.com/photo.jpg"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "inspect_media_metadata",
+          "args": {
+            "media_url": "https://example.com/photo.jpg"
+          },
+          "result": {
+            "tool": "inspect_media_metadata",
+            "edited": true,
+            "software": "Photoshop",
+            "warnings": [
+              "Ảnh có dấu hiệu bị ghép"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G07_multi_official_records",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_official_records",
+        "difficulty": "medium",
+        "what_it_tests": "Lượt 2 tìm hồ sơ chính thức dựa trên thông tin cũ."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Có tin đồn công ty VinFast sắp phá sản trên Facebook."
+        },
+        {
+          "role": "user",
+          "content": "Hãy tìm kiếm thông tin về VinFast phá sản trong hồ sơ doanh nghiệp chính thức."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "official_records_search",
+            "args": {
+              "query": "VinFast phá sản"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "official_records_search",
+            "args": {
+              "query": "VinFast phá sản"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "official_records_search",
+          "args": {
+            "query": "VinFast phá sản"
+          },
+          "result": {
+            "tool": "official_records_search",
+            "official_record": "Không có hồ sơ nào khớp",
+            "date": "N/A"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G08_multi_cross_compare",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_cross_compare",
+        "difficulty": "medium",
+        "what_it_tests": "So sánh mâu thuẫn tin đồn ở lượt 1."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tôi nghe nói nước muối chữa được Covid."
+        },
+        {
+          "role": "user",
+          "content": "Hãy so sánh tin đồn này giữa nhiều nguồn độc lập xem có mâu thuẫn gì không."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "cross_source_compare",
+            "args": {
+              "claim": "nước muối chữa được Covid"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "cross_source_compare",
+            "args": {
+              "claim": "nước muối chữa được Covid"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "cross_source_compare",
+          "args": {
+            "claim": "nước muối chữa được Covid"
+          },
+          "result": {
+            "tool": "cross_source_compare",
+            "consensus": "Nhiều nguồn phủ nhận",
+            "conflicts": [
+              "Nguồn A nói X",
+              "Nguồn B nói Y"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G09_multi_fact_check",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_fact_check",
+        "difficulty": "medium",
+        "what_it_tests": "Đối chiếu tin đồn y tế ở lượt 1."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Có người nói ăn tỏi ngừa được bệnh dại."
+        },
+        {
+          "role": "user",
+          "content": "Hãy đối chiếu tin này với các nguồn y tế tin cậy để xác thực."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fact_check_source",
+            "args": {
+              "claim": "ăn tỏi ngừa được bệnh dại"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "fact_check_source",
+            "args": {
+              "claim": "ăn tỏi ngừa được bệnh dại"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "fact_check_source",
+          "args": {
+            "claim": "ăn tỏi ngừa được bệnh dại"
+          },
+          "result": {
+            "tool": "fact_check_source",
+            "claim": "ăn tỏi ngừa được bệnh dại",
+            "status": "Chưa xác thực",
+            "reliable_source_url": "Không tìm thấy nguồn uy tín.",
+            "explanation": "Cần thêm thông tin để đối chiếu."
+          }
+        }
+      ]
+    },
+    {
+      "id": "G10_multi_evidence_graph",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_evidence_graph",
+        "difficulty": "medium",
+        "what_it_tests": "Vẽ sơ đồ bằng chứng cho tin đồn ở lượt 1."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tin đồn: Sóng 5G gây rụng tóc hàng loạt."
+        },
+        {
+          "role": "user",
+          "content": "Hãy tạo sơ đồ quan hệ bằng chứng cho tin đồn này."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "build_evidence_graph",
+            "args": {
+              "claim": "sóng 5G gây rụng tóc hàng loạt"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "build_evidence_graph",
+            "args": {
+              "claim": "Sóng 5G gây rụng tóc hàng loạt"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "build_evidence_graph",
+          "args": {
+            "claim": "Sóng 5G gây rụng tóc hàng loạt"
+          },
+          "result": {
+            "tool": "build_evidence_graph",
+            "graph_nodes": 5,
+            "conclusion": "Không đủ bằng chứng"
+          }
+        }
+      ]
+    }
+  ]
+}

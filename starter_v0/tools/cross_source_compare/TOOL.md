@@ -1,0 +1,1 @@
+# cross_source_compare\n\nSo sánh cùng một claim giữa nhiều nguồn độc lập và phát hiện chi tiết mâu thuẫn.

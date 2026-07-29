@@ -1,0 +1,149 @@
+tools:
+  # ---------------- Core tools ----------------
+  - name: clarify
+    description: "Gửi một câu hỏi cho người dùng để lấy thêm thông tin cần thiết."
+    parameters:
+      type: object
+      properties:
+        question: {type: string, default: "", description: "Câu hỏi"}
+        response_type: {type: string, enum: [text, yes_no, choice], default: "text", description: "Kiểu trả lời"}
+        options: {type: array, default: [], items: {type: string}, description: "Các lựa chọn"}
+      required: [question]
+
+  - name: timeline
+    description: "Lấy các bài đăng gần đây của một tài khoản Twitter."
+    parameters:
+      type: object
+      properties:
+        screenname: {type: string, default: "", description: "Tên tài khoản Twitter (chỉ chứa username, KHÔNG có dấu @, ví dụ: 'sama')"}
+        limit: {type: integer, default: 5, description: "Số lượng tweet cần lấy"}
+      required: [screenname]
+
+  - name: social_search
+    description: "Tìm bài đăng trên mạng xã hội theo từ khóa chủ đề."
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Từ khóa cần tìm"}
+        search_type: {type: string, enum: [Latest, Top], default: "Latest", description: "Cách sắp xếp (Top cho phổ biến, Latest cho mới nhất)"}
+        limit: {type: integer, default: 5, description: "Số lượng bài viết"}
+      required: [query]
+
+  - name: lookup
+    description: "Tra cứu thông tin hoặc tin tức trên internet."
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "", description: "Từ khóa chính (nếu tìm news/tin tức thì CHỈ nhập từ khóa lõi, ví dụ: 'AI' thay vì 'tin tức AI')"}
+        topic: {type: string, enum: [general, news], default: "general", description: "Phân loại (chọn news nếu tìm tin tức)"}
+        timeframe: {type: string, enum: [day, week, month, year], default: "week", description: "Khoảng thời gian (day cho 'hôm nay')"}
+        max_results: {type: integer, default: 5, description: "Số kết quả"}
+      required: [query]
+
+  - name: fetch
+    description: "Đọc và lấy nội dung text từ một URL cụ thể."
+    parameters:
+      type: object
+      properties:
+        url: {type: string, default: "", description: "Địa chỉ URL đầy đủ"}
+      required: [url]
+
+  - name: format
+    description: "Trình bày dữ liệu đã thu thập thành markdown report."
+    parameters:
+      type: object
+      properties:
+        items:
+          type: array
+          default: []
+          description: "Danh sách item"
+          items:
+            type: object
+            properties:
+              title: {type: string}
+              url: {type: string}
+              source: {type: string}
+              summary: {type: string}
+              section: {type: string}
+        template: {type: string, enum: [brief, sections, bullets, thread, daily_ai_vn], default: "sections", description: "Khuôn"}
+        headline: {type: string, default: "", description: "Tiêu đề"}
+      required: [items, template]
+
+  # ---------------- Bonus tools ----------------
+  - name: send
+    description: "Gửi nội dung đến một hệ thống bên ngoài (Telegram)."
+    parameters:
+      type: object
+      properties:
+        text: {type: string, default: "", description: "Nội dung văn bản"}
+        confirmed: {type: boolean, default: false, description: "Cờ xác nhận. LUÔN phải đặt là false nếu người dùng chưa xác nhận."}
+      required: [text]
+
+#   - name: policy
+#     description: "Tìm kiếm thông tin trong tài liệu nội bộ."
+#     parameters:
+#       type: object
+#       properties:
+#         query: {type: string, description: "Câu hỏi."}
+#       required: [query]
+
+#   - name: papers
+#     description: "Tìm kiếm tài liệu học thuật, báo cáo khoa học trên arXiv."
+#     parameters:
+#       type: object
+#       properties:
+#         query: {type: string, description: "Truy vấn tìm kiếm (VD: 'attention is all you need', 'LLM reasoning')"}
+#         max_results: {type: integer, default: 3, description: "Số kết quả trả về"}
+#       required: [query]
+
+#   - name: paper_text
+#     description: "Tải và trích xuất nội dung từ một bài báo khoa học trên arXiv thông qua URL."
+#     parameters:
+#       type: object
+#       properties:
+#         arxiv_url: {type: string, description: "Đường dẫn arXiv (VD: 'https://arxiv.org/abs/2301.12345')"}
+#         max_pages: {type: integer, default: 5, description: "Số trang"}
+#         max_chars: {type: integer, default: 8000, description: "Số ký tự"}
+#       required: [arxiv_url]
+
+  - name: youtube_summarizer
+    description: "Lấy phụ đề (transcript) của video Youtube từ URL để có thể đọc và tóm tắt."
+    parameters:
+      type: object
+      properties:
+        url: {type: string, description: "Đường dẫn URL của video Youtube"}
+        max_chars: {type: integer, default: 15000, description: "Giới hạn số ký tự"}
+      required: [url]
+
+  - name: weather_forecast
+    description: "Lấy thông tin thời tiết hiện tại hoặc thời tiết trong quá khứ."
+    parameters:
+      type: object
+      properties:
+        location: {type: string, default: "", description: "Tên địa điểm (ví dụ: Hanoi, Tokyo). Để trống để lấy thời tiết theo IP hiện tại."}
+        date: {type: string, default: "", description: "Ngày cần tra cứu theo định dạng YYYY-MM-DD. Bỏ trống nếu muốn xem thời tiết hiện tại."}
+
+  - name: crypto_tracker
+    description: "Tra cứu giá hiện tại của các đồng tiền điện tử phổ biến."
+    parameters:
+      type: object
+      properties:
+        symbol: {type: string, default: "BTCUSDT", description: "Mã giao dịch (ví dụ: BTC, ETH). Mặc định là BTC."}
+
+  - name: github_explorer
+    description: "Tìm kiếm các repository đang hot/trending trên Github."
+    parameters:
+      type: object
+      properties:
+        query: {type: string, default: "AI", description: "Từ khóa tìm kiếm (ví dụ: AI, agent)"}
+        language: {type: string, default: "", description: "Ngôn ngữ lập trình (ví dụ: python, javascript)"}
+        limit: {type: integer, default: 5, description: "Số lượng kết quả trả về"}
+      required: [query]
+
+  - name: image_generator
+    description: "Sinh ảnh minh họa bằng AI dựa trên mô tả văn bản."
+    parameters:
+      type: object
+      properties:
+        prompt: {type: string, description: "Mô tả bức ảnh bằng tiếng Anh chi tiết"}
+      required: [prompt]
